@@ -9,7 +9,7 @@ class SharedHelper {
   Future<bool?> getThemeData() async {
     bool? data;
     SharedPreferences shr = await SharedPreferences.getInstance();
-    data = shr.getBool('true')!;
+    data = shr.getBool('true');
     return data;
   }
 }

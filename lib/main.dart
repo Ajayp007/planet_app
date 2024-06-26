@@ -20,7 +20,6 @@ void main() {
         builder: (context, value, child) {
           value.setTheme();
           return MaterialApp(
-
             debugShowCheckedModeBanner: false,
             routes: appRoutes,
             theme: lightTheme,
