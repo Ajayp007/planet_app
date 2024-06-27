@@ -5,8 +5,8 @@ class ThemeProvider with ChangeNotifier {
   bool? themeMode = true;
 
   Future<void> setTheme() async {
-    SharedHelper helper = SharedHelper();
-    themeMode = await helper.getThemeData();
+
+    themeMode = await getThemeData();
     notifyListeners();
   }
 }
