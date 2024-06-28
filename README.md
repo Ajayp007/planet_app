@@ -18,10 +18,10 @@ The Solar System is the gravitationally bound system of the Sun and the objects 
 
 ## ⚙️ Features
 Main features are as follows:
-Shaw All Planets With Animation
-Like And Save Your Favorite Planet
-Full Details Of Each Planets
-Also Remove Planet From Like Planets
+Shaw All Planets With Animation.
+Like And Save Your Favorite Planet.
+Full Details Of Each Planets.
+Also Remove Planet From Like Planets.
 ## 📲 Screenshots
 
 <img align="left" src="" width="220px">
