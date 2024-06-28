@@ -21,7 +21,6 @@ void main() {
           value.setTheme();
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            initialRoute: 'fav',
             routes: appRoutes,
             theme: lightTheme,
             darkTheme: darkTheme,

@@ -18,11 +18,18 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   ThemeProvider? providerRT;
 
   @override
+  void initState() {
+    super.initState();
+    context.read<HomeProvider>().getPlanetData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     providerW = context.watch<HomeProvider>();
     providerR = context.read<HomeProvider>();
     providerWT = context.watch<ThemeProvider>();
     providerRT = context.read<ThemeProvider>();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -62,24 +69,36 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: providerW!.likePlanet.length,
+                    itemCount: providerW!.likeName.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        height: 200,
-                        alignment: Alignment.center,
-                        width: MediaQuery.sizeOf(context).width,
+                        height: 100,
+                        width: 200,
                         margin: const EdgeInsets.all(12),
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 2),
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              providerW!.likePlanet[index],
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all()),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.network(
+                              providerW!.likePlanetImg[index],
+                              height: 80,
                             ),
-                          ),
-                          borderRadius: BorderRadius.circular(12),
+                            Text(
+                              providerW!.likeName[index],
+                              style: const TextStyle(fontSize: 5),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                providerW!.deleteLikePlanet(index);
+                              },
+                              icon: const Icon(Icons.delete_outline),
+                            ),
+                          ],
                         ),
-                        child: Text(providerW!.likePlanet[index]),
                       );
                     },
                   ),

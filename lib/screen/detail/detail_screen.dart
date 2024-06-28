@@ -19,6 +19,7 @@ class _DetailScreenState extends State<DetailScreen>
   ThemeProvider? providerRT;
   AnimationController? animationController;
   Tween<double>? rotationPlanet;
+  Animation<Alignment>? alimentController;
 
   @override
   void initState() {
@@ -27,6 +28,9 @@ class _DetailScreenState extends State<DetailScreen>
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));
     rotationPlanet = Tween(begin: 0, end: 1);
+    // alimentController = Tween<Alignment>(
+    //         begin: const Alignment(-2, 0), end: const Alignment(2, 0))
+    //     .animate(animationController!);
     animationController!.addListener(
       () {
         setState(() {});
@@ -77,10 +81,9 @@ class _DetailScreenState extends State<DetailScreen>
                     ),
                     IconButton(
                       onPressed: () {
-                        providerR!
-                            .setLikePlanet(providerR!.planetList[index].image!);
-                        providerR!
-                            .setLikePlanet(providerR!.planetList[index].name!);
+                        providerR!.setLikePlanet(
+                            providerR!.planetList[index].image!,
+                            providerR!.planetList[index].name!);
                       },
                       icon: const Icon(Icons.favorite_border_outlined),
                     ),
@@ -124,7 +127,7 @@ class _DetailScreenState extends State<DetailScreen>
                   "About This Planet :- ${providerW!.planetList[index].description}",
                   style: const TextStyle(fontSize: 16),
                   textAlign: TextAlign.justify,
-                ),
+                )
               ],
             ),
           )
