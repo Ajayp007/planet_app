@@ -79,7 +79,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             vertical: 2, horizontal: 2),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all()),
+                            border: Border.all(color: providerWT!.themeMode==true?Colors.black:Colors.white)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -94,6 +94,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             IconButton(
                               onPressed: () {
                                 providerW!.deleteLikePlanet(index);
+
                               },
                               icon: const Icon(Icons.delete_outline),
                             ),

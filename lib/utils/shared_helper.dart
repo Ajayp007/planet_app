@@ -19,12 +19,12 @@ import 'package:shared_preferences/shared_preferences.dart';
   }
 
   Future<List<String>?> getPlanetImg() async {
-    List<String>? planetList = [];
+    List<String>? planetListImg = [];
 
     SharedPreferences shr = await SharedPreferences.getInstance();
 
-    planetList = shr.getStringList('planet');
-    return planetList;
+    planetListImg = shr.getStringList('planet');
+    return planetListImg;
   }
 
 Future<void> setPlanetName(List<String> l1) async {
@@ -33,11 +33,11 @@ Future<void> setPlanetName(List<String> l1) async {
 }
 
 Future<List<String>?> getPlanetName() async {
-  List<String>? planetList = [];
+  List<String>? planetListName = [];
 
   SharedPreferences shr = await SharedPreferences.getInstance();
 
-  planetList = shr.getStringList('planet');
-  return planetList;
+  planetListName = shr.getStringList('planet');
+  return planetListName;
 }
 

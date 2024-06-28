@@ -15,34 +15,34 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> setLikePlanet(String name1, String pImg) async {
-    List<String>? img = await getPlanetImg();
     List<String>? name = await getPlanetName();
-    if (img != null && name != null) {
-      img.add(pImg);
+    List<String>? img = await getPlanetImg();
+    if (name != null && img != null) {
       name.add(name1);
-      setPlanetImg(img);
+      img.add(pImg);
       setPlanetName(name);
+      setPlanetImg(img);
     } else {
-      setPlanetImg([pImg]);
       setPlanetName([name1]);
+      setPlanetImg([pImg]);
     }
-    getPlanetImg();
     getPlanetName();
+    getPlanetImg();
+
     notifyListeners();
   }
 
   Future<void> getPlanetData() async {
     var list = await getPlanetImg();
     var list2 = await getPlanetName();
-    if (list != null && list2 != null) {
-      likePlanetImg = list;
+    if (list2 != null && list != null) {
       likeName = list2;
+      likePlanetImg = list;
       notifyListeners();
     }
   }
 
-  void deleteLikePlanet(int index)
-  {
+  void deleteLikePlanet(int index) {
     likeName.removeAt(index);
     likePlanetImg.removeAt(index);
     notifyListeners();

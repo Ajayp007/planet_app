@@ -82,8 +82,8 @@ class _DetailScreenState extends State<DetailScreen>
                     IconButton(
                       onPressed: () {
                         providerR!.setLikePlanet(
-                            providerR!.planetList[index].image!,
-                            providerR!.planetList[index].name!);
+                            providerR!.planetList[index].name!,
+                            providerR!.planetList[index].image!);
                       },
                       icon: const Icon(Icons.favorite_border_outlined),
                     ),
