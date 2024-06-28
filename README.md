@@ -42,7 +42,7 @@ Also Remove Planet From Like Planets.
 <div align="center">
 
 
-https://github.com/Ajayp007/planet_app/assets/156168895/84373a8b-d0e1-4a66-9bb0-6ca3b83ff207
+https://github.com/Ajayp007/planet_app/assets/156168895/4fc3572c-6da4-4d2d-a20b-d4ea07db7f42
 
 
 ### Made with ❤️ in India.
