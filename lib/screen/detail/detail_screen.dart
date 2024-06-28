@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:galaxy_planet/utils/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -60,75 +61,143 @@ class _DetailScreenState extends State<DetailScreen>
                   fit: BoxFit.cover,
                   height: MediaQuery.sizeOf(context).height,
                 ),
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(Icons.arrow_back),
-                    ),
-                    Text(
-                      "${providerR!.planetList[index].name}",
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        providerR!.setLikePlanet(
-                            providerR!.planetList[index].name!,
-                            providerR!.planetList[index].image!);
-                      },
-                      icon: const Icon(Icons.favorite_border_outlined),
-                    ),
-                  ],
-                ),
-                RotationTransition(
-                  turns: rotationPlanet!.animate(animationController!),
-                  child: Center(
-                    child: Hero(
-                      tag: "$index",
-                      child: Image.network(
-                        "${providerW!.planetList[index].image}",
-                        height: 300,
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 12.0, right: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back),
+                      ),
+                      Text(
+                        "${providerR!.planetList[index].name}",
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          providerR!.setLikePlanet(
+                              providerR!.planetList[index].name!,
+                              providerR!.planetList[index].image!);
+                        },
+                        icon: const Icon(Icons.favorite_border_outlined),
+                      ),
+                    ],
+                  ),
+                  RotationTransition(
+                    turns: rotationPlanet!.animate(animationController!),
+                    child: Center(
+                      child: Hero(
+                        tag: "$index",
+                        child: Image.network(
+                          "${providerW!.planetList[index].image}",
+                          height: 300,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  "${providerW!.planetList[index].name}",
-                  style: const TextStyle(
-                      fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  "Position in Solar System :- ${providerW!.planetList[index].position}",
-                  style: const TextStyle(fontSize: 22),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  "Velocity :- ${providerW!.planetList[index].velocity}",
-                  style: const TextStyle(fontSize: 22),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  "Distance From Sun :- ${providerW!.planetList[index].distance} million km",
-                  style: const TextStyle(fontSize: 22),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  "About This Planet :- ${providerW!.planetList[index].description}",
-                  style: const TextStyle(fontSize: 16),
-                  textAlign: TextAlign.justify,
-                )
-              ],
+            
+                  AnimatedTextKit(
+                    animatedTexts: [
+                      WavyAnimatedText(
+                        "${providerW!.planetList[index].name}",
+                        textStyle: const TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "Position in Solar System :- ",
+                            textStyle: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "${providerW!.planetList[index].position}",
+                            textStyle: const TextStyle(fontSize: 22),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "Velocity :- ",
+                            textStyle: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+            
+                          )
+                        ],
+                      ),
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "${providerW!.planetList[index].velocity}",
+                            textStyle: const TextStyle(fontSize: 22),
+            
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "Distance From Sun :- ",
+                            textStyle: const TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      AnimatedTextKit(
+                        isRepeatingAnimation: false,
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            "${providerW!.planetList[index].distance} million km",
+                            textStyle: const TextStyle(fontSize: 22),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const Text("About This Planet :-",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                  AnimatedTextKit(
+                    isRepeatingAnimation: false,
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        "${providerW!.planetList[index].description}",
+                        textStyle: const TextStyle(fontSize: 20),
+                          textAlign: TextAlign.justify
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           )
         ],
